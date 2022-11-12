@@ -3,11 +3,15 @@ const mongoose = require("mongoose");
 const app = express();
 const indexRouter = require("./routes/index");
 const bodyParser = require("body-parser");
+const cors = require("cors");
+require("dotenv").config();
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false })); // 이게 있어야 req.body가 객체로 인식됨
 app.use(bodyParser.json()); // 이게 있어야 req.body가 객체로 인식됨
 
 app.use("/api", indexRouter);
-const mongoURI = `mongodb://localhost:27017/todo`;
+const mongoURI = process.env.MONGODB_ALTAS;
+
 mongoose
   .connect(mongoURI, { useNewUrlParser: true })
   .then(() => console.log("mongoose connected"))
