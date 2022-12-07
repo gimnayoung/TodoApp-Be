@@ -17,6 +17,7 @@ taskController.createTask = async (req, res) => {
 taskController.getTasks = async (req, res) => {
   try {
     const taskList = await Task.find({});
+    console.log("tttt", taskList);
     // const taskList = [
     //   { task: "테스트", isComplete: false, id: 0 },
     //   { task: "테스트", isComplete: false, id: 3 },
